@@ -10,7 +10,8 @@
         "alias": {
           "components": "./components",
           "pages": "./pages",
-          "lib": "./lib"
+          "lib": "./lib",
+          "utils": "./utils"
         }
       }
     ]
