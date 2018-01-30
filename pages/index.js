@@ -5,7 +5,11 @@ import Link from 'next/link';
 import withLayout from 'lib/withLayout';
 
 const propTypes = {
-  shows: PropTypes.array,
+  shows: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    summary: PropTypes.string,
+    image: PropTypes.object,
+  })),
 };
 
 const defaultProps = {

@@ -4,7 +4,11 @@ import axios from 'axios';
 import withLayout from 'lib/withLayout';
 
 const propTypes = {
-  show: PropTypes.object,
+  show: PropTypes.shape({
+    name: PropTypes.string,
+    summary: PropTypes.string,
+    image: PropTypes.object,
+  }),
 };
 
 const defaultProps = {

@@ -23,9 +23,15 @@ const Link = ({ children, as: asUrl, href }) => (
 Link.displayName = 'Link';
 
 Link.propTypes = {
-  className: PropTypes.string,
+  children: PropTypes.node,
   as: PropTypes.string,
   href: PropTypes.string,
+};
+
+Link.defaultProps = {
+  children: [],
+  as: '',
+  href: '',
 };
 
 export default Link;
