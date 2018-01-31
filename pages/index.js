@@ -1,47 +1,33 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import axios from 'axios';
-import Link from 'next/link';
+import React, { PureComponent, Fragment } from 'react';
 import withLayout from 'lib/withLayout';
+import Link from 'components/Link';
 
-const propTypes = {
-  shows: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string,
-    summary: PropTypes.string,
-    image: PropTypes.object,
-  })),
-};
-
-const defaultProps = {
-  shows: [],
-};
-
-const Index = ({ shows }) => (
-  <Fragment>
-    <h1>Batman TV Shows</h1>
-    <ul>
-      {shows.map(({ show }) => (
-        <li key={show.id}>
-          <Link as={`/p/${show.id}`} href={`/post?id=${show.id}`}>
-            <a>{show.name}</a>
-          </Link>
-        </li>
-      ))}
-    </ul>
-  </Fragment>
-);
-
-Index.propTypes = propTypes;
-Index.defaultProps = defaultProps;
-
-Index.getInitialProps = async () => {
-  const {
-    data,
-  } = await axios.get('https://api.tvmaze.com/search/shows?q=batman');
-
-  return {
-    shows: data,
+class Index extends PureComponent {
+  state = {
+    searchValue: '',
   };
-};
+
+  updateSearchValue = (e) => {
+    this.setState({ searchValue: e.target.value });
+  }
+
+  render() {
+    const {
+      searchValue,
+    } = this.state;
+
+    return (
+      <Fragment>
+        <h1>Seach your favorite TV Show</h1>
+        <form>
+          <input type="text" value={searchValue} onChange={this.updateSearchValue} />
+          <Link href={`/shows?name=${searchValue}`}>
+            <button>Search</button>
+          </Link>
+        </form>
+      </Fragment>
+    );
+  }
+}
 
 export default withLayout(Index);

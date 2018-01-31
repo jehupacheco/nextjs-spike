@@ -8,12 +8,12 @@ const StyledLink = styled.a`
   cursor: pointer;
 
   &:visited {
-    color: purple;
+    color: green;
   }
 `;
 
 const Link = ({ children, as: asUrl, href }) => (
-  <NextLink as={asUrl} href={href}>
+  <NextLink as={asUrl} href={href} passHref>
     <StyledLink>
       {children}
     </StyledLink>

@@ -1,5 +1,5 @@
 {
-  "presets": ["next/babel", "env"],
+  "presets": ["next/babel", "env", "stage-2"],
   "plugins": [
     "transform-decorators-legacy",
     "babel-plugin-styled-components",
