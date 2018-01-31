@@ -1,32 +1,41 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import Router from 'next/router';
 import NProgress from 'nprogress';
 import styled from 'styled-components';
-import Header from 'components/Header';
+import Header from 'components/Layout/Header';
 import globalStyles from 'utils/global';
 
 const Body = styled.div`
   padding: 40px;
 `;
 
-const withLayout = (Component) => {
+const propTypes = {
+  title: PropTypes.string,
+  children: PropTypes.node.isRequired,
+};
+
+const defaultProps = {
+  title: 'NextJS App',
+};
+
+const Layout = ({ title, children }) => {
   Router.onRouteChangeStart = () => NProgress.start();
   Router.onRouteChangeComplete = () => NProgress.done();
   Router.onRouteChangeError = () => NProgress.done();
 
-  const DecoratedComponent = props => (
+  return (
     <Fragment>
-      <Header />
+      <Header title={title} />
       <Body>
-        <Component {...props} />
+        {children}
       </Body>
       <style jsx global>{globalStyles}</style>
     </Fragment>
   );
-
-  DecoratedComponent.getInitialProps = Component.getInitialProps;
-
-  return DecoratedComponent;
 };
 
-export default withLayout;
+Layout.propTypes = propTypes;
+Layout.defaultProps = defaultProps;
+
+export default Layout;

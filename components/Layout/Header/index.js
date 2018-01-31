@@ -1,7 +1,9 @@
 import React from 'react';
-import Link from 'components/Link';
+import PropTypes from 'prop-types';
+import Head from 'next/head';
+import Link from 'components/Common/Link';
 import styled from 'styled-components';
-import Item from 'components/Header/Item';
+import Item from 'components/Layout/Header/Item';
 import colors from 'utils/colors';
 
 const Container = styled.div`
@@ -17,8 +19,15 @@ const Logo = styled.img`
   width: 150px;
 `;
 
-const Header = () => (
+const propTypes = {
+  title: PropTypes.string.isRequired,
+};
+
+const Header = ({ title }) => (
   <Container>
+    <Head>
+      <title>{title}</title>
+    </Head>
     <Logo src="/static/img/logo.png" alt="tvmaze" />
     <Link href="/" color={colors.white}>
       <Item>
@@ -32,5 +41,7 @@ const Header = () => (
     </Link>
   </Container>
 );
+
+Header.propTypes = propTypes;
 
 export default Header;

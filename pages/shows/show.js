@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { Parser } from 'html-to-react';
-import withLayout from 'lib/withLayout';
+import Layout from 'components/Layout';
 
 const propTypes = {
   show: PropTypes.shape({
@@ -19,12 +19,11 @@ const defaultProps = {
 const htmlToReact = new Parser();
 
 const Post = ({ show }) => (
-  <Fragment>
+  <Layout title={show.name}>
     <h1>{show.name}</h1>
     {htmlToReact.parse(show.summary)}
-    {/* <p>{show.summary.replace(/<[/]?p>/g, '')}</p> */}
     <img src={show.image.medium} alt={show.name} />
-  </Fragment>
+  </Layout>
 );
 
 Post.propTypes = propTypes;
@@ -38,4 +37,4 @@ Post.getInitialProps = async ({ query }) => {
   return { show };
 };
 
-export default withLayout(Post);
+export default Post;

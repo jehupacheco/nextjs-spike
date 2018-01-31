@@ -1,8 +1,10 @@
 import React from 'react';
-import withLayout from 'lib/withLayout';
+import Layout from 'components/Layout';
 
 const About = () => (
-  <p>This is the about page</p>
+  <Layout title="About">
+    <p>This is the about page</p>
+  </Layout>
 );
 
-export default withLayout(About);
+export default About;

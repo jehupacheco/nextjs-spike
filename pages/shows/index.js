@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import Link from 'components/Link';
-import withLayout from 'lib/withLayout';
+import Link from 'components/Common/Link';
+import Layout from 'components/Layout';
 import { capitalize } from 'lib/string';
 
 const propTypes = {
@@ -21,7 +21,7 @@ const defaultProps = {
 };
 
 const Index = ({ url, shows }) => (
-  <Fragment>
+  <Layout title={`${capitalize(url.query.name)} TV Shows`}>
     <h1>{capitalize(url.query.name)} TV Shows</h1>
     <ul>
       {shows.map(({ show }) => (
@@ -32,7 +32,7 @@ const Index = ({ url, shows }) => (
         </li>
       ))}
     </ul>
-  </Fragment>
+  </Layout>
 );
 
 Index.propTypes = propTypes;
@@ -48,4 +48,4 @@ Index.getInitialProps = async ({ query }) => {
   };
 };
 
-export default withLayout(Index);
+export default Index;

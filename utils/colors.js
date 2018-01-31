@@ -1,9 +1,5 @@
-export const white = '#ffffff';
-export const blue = '#2196f3';
-export const darkenBlue = '#1e88e5';
-
 export default {
-  white,
-  blue,
-  darkenBlue,
+  white: '#ffffff',
+  blue: '#2196f3',
+  darkenBlue: '#1e88e5',
 };
