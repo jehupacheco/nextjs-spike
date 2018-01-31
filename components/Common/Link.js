@@ -5,23 +5,22 @@ import styled from 'styled-components';
 import colors from 'utils/colors';
 
 const StyledLink = styled.a`
-  color: ${props => props.color};
+  color: ${colors.blue};
   cursor: pointer;
   text-decoration: none;
 
   &:visited {
-    color: ${props => props.color};
+    color: ${colors.blue};
   }
 `;
 
 const Link = ({
   children,
-  color,
   as: asUrl,
   href,
 }) => (
   <NextLink as={asUrl} href={href} passHref>
-    <StyledLink color={color}>
+    <StyledLink>
       {children}
     </StyledLink>
   </NextLink>
@@ -33,14 +32,12 @@ Link.propTypes = {
   children: PropTypes.node,
   as: PropTypes.string,
   href: PropTypes.string,
-  color: PropTypes.string,
 };
 
 Link.defaultProps = {
   children: [],
   as: '',
   href: '',
-  color: colors.blue,
 };
 
 export default Link;

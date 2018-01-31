@@ -2,9 +2,16 @@ import React, { PureComponent } from 'react';
 import styled from 'styled-components';
 import Layout from 'components/Layout';
 import Link from 'components/Common/Link';
+import Button from 'components/Common/Button';
+import Textfield from 'components/Form/Textfield';
 
 const Container = styled.div`
   text-align: center;
+`;
+
+const Form = styled.form`
+  align-items: stretch;
+  display: flex;
 `;
 
 class Index extends PureComponent {
@@ -16,6 +23,11 @@ class Index extends PureComponent {
     this.setState({ searchValue: e.target.value });
   }
 
+  validateSubmit = (e) => {
+    console.log(e);
+    return !this.state.searchValue && e.preventDefault();
+  }
+
   render() {
     const {
       searchValue,
@@ -25,12 +37,12 @@ class Index extends PureComponent {
       <Layout title="Search TV Shows">
         <Container>
           <h1>Search your favorite TV shows</h1>
-          <form>
-            <input type="text" value={searchValue} onChange={this.updateSearchValue} />
+          <Form onSubmit={this.validateSubmit}>
+            <Textfield type="text" value={searchValue} onChange={this.updateSearchValue} rounded />
             <Link href={`/shows?name=${searchValue}`}>
-              <button>Search</button>
+              <Button type="submit">Search</Button>
             </Link>
-          </form>
+          </Form>
         </Container>
       </Layout>
     );

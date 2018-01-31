@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Router from 'next/router';
+import Head from 'next/head';
 import NProgress from 'nprogress';
 import styled from 'styled-components';
 import Header from 'components/Layout/Header';
@@ -26,7 +27,10 @@ const Layout = ({ title, children }) => {
 
   return (
     <Fragment>
-      <Header title={title} />
+      <Head>
+        <title>{title}</title>
+      </Head>
+      <Header />
       <Body>
         {children}
       </Body>

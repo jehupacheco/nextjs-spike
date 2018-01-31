@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import colors from 'utils/colors';
 
 const Item = styled.div`
-  color: white;
+  color: ${colors.white};
   font-size: 16px;
   padding: 40px 20px;
 
