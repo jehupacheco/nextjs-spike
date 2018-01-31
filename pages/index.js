@@ -1,6 +1,11 @@
-import React, { PureComponent, Fragment } from 'react';
+import React, { PureComponent } from 'react';
+import styled from 'styled-components';
 import withLayout from 'lib/withLayout';
 import Link from 'components/Link';
+
+const Container = styled.div`
+  text-align: center;
+`;
 
 class Index extends PureComponent {
   state = {
@@ -17,15 +22,15 @@ class Index extends PureComponent {
     } = this.state;
 
     return (
-      <Fragment>
-        <h1>Seach your favorite TV Show</h1>
+      <Container>
+        <h1>Search your favorite TV shows</h1>
         <form>
           <input type="text" value={searchValue} onChange={this.updateSearchValue} />
           <Link href={`/shows?name=${searchValue}`}>
             <button>Search</button>
           </Link>
         </form>
-      </Fragment>
+      </Container>
     );
   }
 }
