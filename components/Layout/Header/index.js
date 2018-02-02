@@ -19,7 +19,9 @@ const Logo = styled.img`
 
 const Header = () => (
   <Container>
-    <Logo src="/static/img/logo.png" alt="tvmaze" />
+    <Link href="/">
+      <Logo src="/static/img/logo.png" alt="tvmaze" />
+    </Link>
     <Link href="/">
       <Item>
         Home

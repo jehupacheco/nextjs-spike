@@ -4,14 +4,21 @@ import Layout from 'components/Layout';
 import Link from 'components/Common/Link';
 import Button from 'components/Common/Button';
 import Textfield from 'components/Form/Textfield';
+import media from 'utils/media';
 
 const Container = styled.div`
+  margin: 0 auto;
+  max-width: 600px;
   text-align: center;
 `;
 
 const Form = styled.form`
-  align-items: stretch;
-  display: flex;
+  padding: 1px 0 0;
+
+  ${media.tablet`
+    align-items: center;
+    display: flex;
+  `}
 `;
 
 class Index extends PureComponent {
@@ -37,7 +44,9 @@ class Index extends PureComponent {
           <Form onSubmit={this.validateSubmit}>
             <Textfield type="text" value={searchValue} onChange={this.updateSearchValue} rounded />
             <Link href={`/shows?name=${searchValue}`}>
-              <Button type="submit">Search</Button>
+              <Button type="submit">
+                <b>Search</b>
+              </Button>
             </Link>
           </Form>
         </Container>

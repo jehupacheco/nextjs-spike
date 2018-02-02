@@ -1,7 +1,14 @@
 import fonts from 'utils/fonts';
+import normalize from 'utils/normalize';
 
 export default `
+  ${normalize}
+
   ${fonts}
+
+  * {
+    box-sizing: border-box;
+  }
 
   body {
     margin: 0;
