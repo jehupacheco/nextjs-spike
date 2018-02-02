@@ -23,10 +23,7 @@ class Index extends PureComponent {
     this.setState({ searchValue: e.target.value });
   }
 
-  validateSubmit = (e) => {
-    console.log(e);
-    return !this.state.searchValue && e.preventDefault();
-  }
+  validateSubmit = e => !this.state.searchValue && e.preventDefault();
 
   render() {
     const {
